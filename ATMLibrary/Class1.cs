@@ -60,7 +60,6 @@ namespace ATMLibrary
     {
         private List<Card> cards = new List<Card>();
         public event EventHandler<string> OnMessage;
-        public event EventHandler<Card> OnCardChanged;
 
         public delegate bool AuthenticationHandler(string cardNumber, string pin);
         public AuthenticationHandler Authenticate;
@@ -103,10 +102,6 @@ namespace ATMLibrary
             return false;
         }
 
-        public void ChangeCard(Card newCard)
-        {
-            OnCardChanged?.Invoke(this, newCard);
-        }
 
         public List<string> GetNearbyATMs()
         {
